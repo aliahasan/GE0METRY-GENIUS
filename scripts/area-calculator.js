@@ -34,7 +34,12 @@ function  calculateRectangleArea(){
 function calculateParallelogramArea(){
     const base =  getInputValueById('parallelogram-base');
     const height = getInputValueById('parallelogram-height');
-    const area = base * height;
+    
+    if(isNaN(base) || isNaN(height)){
+        alert('please insert a number!');
+        return        
+        }
+    const area = base * height;    
     areaFieldValue('parallelogram-area', area);
 }
 
@@ -42,6 +47,12 @@ function calculateParallelogramArea(){
 function calculateEllipseArea(){
     const majorEllipseRadius = getInputValueById('major-ellipse');
     const minorEllipseRadius = getInputValueById('minor-ellipse');
+
+    if(isNaN(majorEllipseRadius) || isNaN(minorEllipseRadius)){
+        alert('please insert a number!');
+        return;
+    }
     const area = Math.PI * majorEllipseRadius * minorEllipseRadius;
-    areaFieldValue ('ellipse-area', area);
+    const areaTwoDecimal = area.toFixed(2);
+    areaFieldValue ('ellipse-area', areaTwoDecimal);
 }
