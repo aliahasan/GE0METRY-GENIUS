@@ -1,34 +1,47 @@
-function calculateTriangleArea(){
-    // get triangle  base value
-    const baseField = document.getElementById('triangle-base');
-    const baseFieldText = baseField.value;
-    const base = parseFloat(baseFieldText);
-    console.log(base);
 
-    // get  triangle height value
-    const heightField = document.getElementById('triangle-height');
-    const heightFieldText = heightField.value;
-    const  height = parseFloat(heightFieldText);
-    console.log(height);
 
-    const area = 0.5 * base * height;
-    // show triangle area
-    const areaSpan = document.getElementById('triangle-area');
-    areaSpan.innerText = area;
+// reusable function----> reduce duplicate code
+function  getInputValueById(inputFieldById){
+    const inputField = document.getElementById(inputFieldById);
+    const inputFieldText = inputField.value
+    const inputFieldValue = parseFloat(inputFieldText);
+    return inputFieldValue;
 }
 
+// set  Area Field  text / value
+function areaFieldValue (areaFiledId , area){
+    const areaValue  = document.getElementById(areaFiledId);
+    areaValue.innerText = area;
+}
+
+// TRIANGULAR AREA CALCULATE;
+function calculateTriangleArea(){
+    const base = getInputValueById('triangle-base');
+    const height = getInputValueById('triangle-height');
+    const area = 0.5 * base * height;
+    areaFieldValue('triangle-area', area);
+    
+}
+// RECTANGULAR AREA CALCULATOR;
 function  calculateRectangleArea(){
-    //get rectangle width value;
-    const widthField = document.getElementById('rectangle-width');
-    const widthFieldText = widthField.value;
-    const width = parseFloat(widthFieldText);
+    const length = getInputValueById('rectangle-length');
+    const width = getInputValueById('rectangle-width');
+    const area = length * width;
+    areaFieldValue('rectangle-area', area);
+}
 
-    const lengthField = document.getElementById('rectangle-length');
-    const lengthFieldText = lengthField.value;
-    const length = parseFloat(lengthFieldText);
+// PARALLELOGRAM AREA CALCULATE
+function calculateParallelogramArea(){
+    const base =  getInputValueById('parallelogram-base');
+    const height = getInputValueById('parallelogram-height');
+    const area = base * height;
+    areaFieldValue('parallelogram-area', area);
+}
 
-    const area = width * length;
-    // show rectangle area
-    const areaSpan  = document.getElementById('rectangle-area');
-    areaSpan.innerText = area;
+// ELLIPSE AREA CALCULATE
+function calculateEllipseArea(){
+    const majorEllipseRadius = getInputValueById('major-ellipse');
+    const minorEllipseRadius = getInputValueById('minor-ellipse');
+    const area = Math.PI * majorEllipseRadius * minorEllipseRadius;
+    areaFieldValue ('ellipse-area', area);
 }
